@@ -1,5 +1,14 @@
 ### GET /api/v1/scores
-GET http://localhost:8080/api/v1/scores?email=2V2QI@example.com&firstName=John&lastName=Doe&postCode=12345
+GET http://localhost:8080/api/v1/scores?email=asdf@example.com&firstName=John&lastName=Doe&postCode=12345
 
-### GET /api/v2/scores
-GET http://localhost:8080/api/v2/scores?email=2V2QI@example.com&firstName=John&lastName=Doe&postCode=12345
+### POST /api/v2/scores
+POST http://localhost:8080/api/v2/scores
+Content-Type: application/json
+
+{
+  "email": "john.doe@example.com",
+  "firstName": "John",
+  "lastName": "Doe",
+  "postCode": "E3 5QX"
+}
+

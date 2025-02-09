@@ -3,15 +3,20 @@ package com.micronaut.controller;
 import com.micronaut.core.FraudScore;
 import com.micronaut.core.FraudScoreService;
 import com.micronaut.core.Person;
-import io.micronaut.http.annotation.Controller;
-import io.micronaut.http.*;
+import io.micronaut.core.annotation.Introspected;
+import io.micronaut.http.HttpStatus;
+import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
+import io.micronaut.http.exceptions.HttpStatusException;
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
+
 import java.util.Optional;
 
 @Controller("/api")
+@Introspected
+@Slf4j
 public class FraudScoreController {
-
     private final FraudScoreService fraudScoreService;
 
     public FraudScoreController(FraudScoreService fraudScoreService) {
@@ -19,16 +24,24 @@ public class FraudScoreController {
     }
 
     @Get(value = "/v1/scores", produces = MediaType.APPLICATION_JSON)
-    public Mono<FraudScoreResponse> getScores(@RequestBean FraudScoreQuery fraudScoreQuery) {
+    public Mono<FraudScoreResponse> getScoresV1(@RequestBean FraudScoreQuery fraudScoreQuery) {
         Person person = fraudScoreQuery.asPerson();
         Optional<FraudScore> fraudScore = fraudScoreService.calculateScoreForPerson(person);
-        return Mono.just(fraudScore.map(FraudScoreResponse::fromFraudScore).orElse(new FraudScoreResponse()));
+
+        return Mono.justOrEmpty(fraudScore)
+                .map(FraudScoreResponse::fromFraudScore)
+                .switchIfEmpty(Mono.error(new HttpStatusException(HttpStatus.NOT_FOUND, "Fraud score not found")));
     }
 
-    @Get(value = "/v2/scores", produces = MediaType.APPLICATION_JSON)
-    public Mono<FraudScoreResponse> getScoresV2(@RequestBean FraudScoreQuery fraudScoreQuery) {
+    @Post(value = "/v2/scores")
+    public Mono<FraudScoreResponse> getScoresV2(@Body FraudScoreQuery fraudScoreQuery) {
         Person person = fraudScoreQuery.asPerson();
         Optional<FraudScore> fraudScore = fraudScoreService.calculateScoreForPerson(person);
-        return Mono.justOrEmpty(fraudScore).map(FraudScoreResponse::fromFraudScore);
+
+        return Mono.justOrEmpty(fraudScore)
+                .map(FraudScoreResponse::fromFraudScore)
+                .switchIfEmpty(Mono.error(new HttpStatusException(HttpStatus.NOT_FOUND, "Fraud score not found")));
     }
+
+
 }

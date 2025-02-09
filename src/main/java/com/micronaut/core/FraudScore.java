@@ -1,24 +1,25 @@
 package com.micronaut.core;
 
-import lombok.Data;
+import io.micronaut.core.annotation.Introspected;
+import io.micronaut.serde.annotation.Serdeable;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@Introspected // Necessary for Micronaut's reflection capabilities
+@Serdeable
 public class FraudScore {
 
     private final Person person;
     private final int score;
     private final LocalDateTime time;
-
-    FraudScore(Person person, int score, LocalDateTime time) {
-        this.person = person;
-        this.score = score;
-        this.time = time;
-    }
 
     @Override
     public boolean equals(Object o) {

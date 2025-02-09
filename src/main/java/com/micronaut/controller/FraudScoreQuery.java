@@ -3,12 +3,14 @@ package com.micronaut.controller;
 import com.micronaut.core.Person;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.http.annotation.*;
+import io.micronaut.serde.annotation.Serdeable;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
 @Introspected
+@Serdeable
 public class FraudScoreQuery {
 
     @QueryValue("email")
@@ -24,10 +26,6 @@ public class FraudScoreQuery {
     private String postCode;
 
     public Person asPerson() {
-        return new Person()
-            .setEmail(email)
-            .setFirstName(firstName)
-            .setLastName(lastName)
-            .setPostCode(postCode);
+        return Person.create(email, firstName, lastName, postCode);
     }
 }

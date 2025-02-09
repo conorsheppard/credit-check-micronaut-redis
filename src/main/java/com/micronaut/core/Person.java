@@ -1,39 +1,32 @@
 package com.micronaut.core;
 
+import io.micronaut.serde.annotation.Serdeable;
 import lombok.*;
-import lombok.experimental.Accessors;
 
-import java.util.Objects;
+import java.util.regex.Pattern;
 
-import static com.micronaut.utils.EmailValidator.validateEmail;
-
-@Getter
-@Setter
-@Accessors(chain = true)
+@Data
+@Serdeable
+@Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@NoArgsConstructor(access = AccessLevel.PUBLIC, force = true)
+@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 public class Person {
-    private String email;
-    private String firstName;
-    private String lastName;
-    private String postCode;
+    private final String email;
+    private final String firstName;
+    private final String lastName;
+    private final String postCode;
 
-    public Person setEmail(String email) throws IllegalArgumentException {
-        this.email = validateEmail(email);
-        return this;
+    private static final Pattern EMAIL_PATTERN =
+            Pattern.compile("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
+
+    public static Person create(String email, String firstName, String lastName, String postCode) {
+        return new Person(validateEmail(email), firstName, lastName, postCode);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return email.equals(person.email) && Objects.equals(firstName, person.firstName) && Objects.equals(lastName,
-            person.lastName) && Objects.equals(postCode, person.postCode);
-    }
+    private static String validateEmail(String email) {
+        if (email == null || !EMAIL_PATTERN.matcher(email).matches())
+            throw new IllegalArgumentException("Invalid email format");
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(email, firstName, lastName, postCode);
+        return email;
     }
 }

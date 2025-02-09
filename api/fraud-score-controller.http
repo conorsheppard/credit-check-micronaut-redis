@@ -1,0 +1,5 @@
+### GET /api/v1/scores
+GET http://localhost:8080/api/v1/scores?email=2V2QI@example.com&firstName=John&lastName=Doe&postCode=12345
+
+### GET /api/v2/scores
+GET http://localhost:8080/api/v2/scores?email=2V2QI@example.com&firstName=John&lastName=Doe&postCode=12345

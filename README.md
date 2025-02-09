@@ -1,3 +1,5 @@
+<img src="./badges/jacoco.svg" style="display: flex;" alt="jacoco-test-coverage-badge">
+
 ## Micronaut 4.7.5 Documentation
 
 - [User Guide](https://docs.micronaut.io/4.7.5/guide/index.html)

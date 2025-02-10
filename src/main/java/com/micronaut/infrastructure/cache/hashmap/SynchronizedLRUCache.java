@@ -1,7 +1,9 @@
-package com.micronaut.infrastructure.cache;
+package com.micronaut.infrastructure.cache.hashmap;
 
 import com.micronaut.core.FraudScore;
-import io.micronaut.context.annotation.Property;
+import com.micronaut.infrastructure.cache.FraudScoreCache;
+import io.micronaut.context.annotation.Primary;
+import io.micronaut.context.annotation.Value;
 import jakarta.inject.Singleton;
 import lombok.Getter;
 
@@ -17,8 +19,8 @@ public class SynchronizedLRUCache implements FraudScoreCache {
     private final int maxCacheSize;
     private final Map<String, FraudScore> cacheStorage;
 
-    public SynchronizedLRUCache(@Property(name = "app.cache.size") int cacheSize) {
-        this.maxCacheSize = cacheSize; // Inject cache size from config
+    public SynchronizedLRUCache(@Value("${app.cache.size:2}") int size) {
+        this.maxCacheSize = size;
 
         this.cacheStorage = Collections.synchronizedMap(new LinkedHashMap<>(maxCacheSize + 1, 0.75F, true) {
             @Override
@@ -28,10 +30,12 @@ public class SynchronizedLRUCache implements FraudScoreCache {
         });
     }
 
+    @Override
     public synchronized void put(String key, FraudScore value) {
         cacheStorage.put(key, value);
     }
 
+    @Override
     public synchronized Optional<FraudScore> get(String key) {
         return Optional.ofNullable(cacheStorage.get(key));
     }

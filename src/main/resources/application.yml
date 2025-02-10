@@ -1,0 +1,32 @@
+micronaut:
+  config-files: "classpath:application.yml"
+  application:
+    name: fraud-check-micronaut
+  packages:
+    - com.micronaut
+
+app:
+  cache:
+    size: 2
+    expiry: 10
+
+feature:
+  api:
+    scores:
+      v1:
+        status: deprecated
+
+server:
+  port: 8080
+
+redis:
+  uri: redis://localhost:6379
+  timeout: 5s
+  ssl: false
+  username:
+  password:
+  db: 0
+
+logging:
+  level:
+    io.micronaut: DEBUG

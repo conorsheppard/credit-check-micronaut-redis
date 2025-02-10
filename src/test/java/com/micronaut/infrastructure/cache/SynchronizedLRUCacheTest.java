@@ -2,6 +2,7 @@ package com.micronaut.infrastructure.cache;
 
 import com.micronaut.core.FraudScore;
 import com.micronaut.core.Person;
+import com.micronaut.infrastructure.cache.hashmap.SynchronizedLRUCache;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

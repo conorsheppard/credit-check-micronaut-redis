@@ -1,6 +1,7 @@
 package com.micronaut.core;
 
 import com.micronaut.infrastructure.cache.FraudScoreCache;
+import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import lombok.AllArgsConstructor;
 
@@ -12,6 +13,7 @@ import java.util.Optional;
 @Singleton
 @AllArgsConstructor
 public class FraudScoreService {
+    @Inject
     private final FraudScoreCache fraudScoreCache;
     private final FraudScoreProvider[] fraudScoreProviders;
 

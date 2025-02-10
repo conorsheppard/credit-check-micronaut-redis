@@ -91,6 +91,16 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>io.micronaut.redis</groupId>
+      <artifactId>micronaut-redis-lettuce</artifactId>
+      <version>6.6.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.yaml</groupId>
+      <artifactId>snakeyaml</artifactId>
+      <scope>runtime</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -129,22 +139,22 @@
               <artifactId>micronaut-validation-processor</artifactId>
               <version>${micronaut.validation.processor.version}</version>
             </path>
-<!--            <path>-->
-<!--              <groupId>io.micronaut</groupId>-->
-<!--              <artifactId>micronaut-http-validation</artifactId>-->
-<!--              <version>${micronaut.core.version}</version>-->
-<!--            </path>-->
-<!--            <path>-->
-<!--              <groupId>io.micronaut.serde</groupId>-->
-<!--              <artifactId>micronaut-serde-processor</artifactId>-->
-<!--              <version>${micronaut.serialization.version}</version>-->
-<!--              <exclusions>-->
-<!--                <exclusion>-->
-<!--                  <groupId>io.micronaut</groupId>-->
-<!--                  <artifactId>micronaut-inject</artifactId>-->
-<!--                </exclusion>-->
-<!--              </exclusions>-->
-<!--            </path>-->
+            <path>
+              <groupId>io.micronaut</groupId>
+              <artifactId>micronaut-http-validation</artifactId>
+              <version>${micronaut.core.version}</version>
+            </path>
+            <path>
+              <groupId>io.micronaut.serde</groupId>
+              <artifactId>micronaut-serde-processor</artifactId>
+              <version>${micronaut.serialization.version}</version>
+              <exclusions>
+                <exclusion>
+                  <groupId>io.micronaut</groupId>
+                  <artifactId>micronaut-inject</artifactId>
+                </exclusion>
+              </exclusions>
+            </path>
           </annotationProcessorPaths>
           <compilerArgs>
             <arg>-Amicronaut.processing.group=com.micronaut</arg>

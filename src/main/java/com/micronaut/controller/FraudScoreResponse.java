@@ -15,7 +15,6 @@ import lombok.Setter;
 @Introspected
 @Serdeable
 public class FraudScoreResponse {
-
     private String email;
     private String firstName;
     private String lastName;

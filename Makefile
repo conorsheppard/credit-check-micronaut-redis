@@ -14,6 +14,9 @@ run:
 docker-run:
 	docker run --rm --name fraud-check-micronaut -p 8080:8080 fraud-check-micronaut
 
+mvn-run:
+	mvn mn:run
+
 test-coverage:
 	./mvnw clean org.jacoco:jacoco-maven-plugin:0.8.12:prepare-agent verify org.jacoco:jacoco-maven-plugin:0.8.12:report
 
@@ -23,5 +26,8 @@ check-coverage:
 coverage-badge-gen:
 	python3 -m jacoco_badge_generator -j target/jacoco-report/jacoco.csv
 
+redis-run:
+	docker run --rm --name redis-fraud-check-cache -p 6379:6379 redis
+
 .SILENT:
-.PHONY: default package package-native run docker-run test-coverage check-coverage coverage-badge-gen
+.PHONY: default package package-native run docker-run mvn-run test-coverage check-coverage coverage-badge-gen redis-run

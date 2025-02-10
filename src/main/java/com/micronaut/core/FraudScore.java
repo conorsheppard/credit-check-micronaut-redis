@@ -13,7 +13,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @AllArgsConstructor
-@Introspected // Necessary for Micronaut's reflection capabilities
+@Introspected
 @Serdeable
 public class FraudScore {
 

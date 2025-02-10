@@ -4,17 +4,14 @@ import com.micronaut.core.FraudScore;
 import com.micronaut.core.FraudScoreProvider;
 import com.micronaut.core.Person;
 import jakarta.inject.Singleton;
+import lombok.AllArgsConstructor;
 
 import java.util.Optional;
 
 @Singleton
+@AllArgsConstructor
 public class FraudsterScoreProvider implements FraudScoreProvider {
-
     private final FraudsterClient fraudsterClient;
-
-    public FraudsterScoreProvider(FraudsterClient fraudsterClient) {
-        this.fraudsterClient = fraudsterClient;
-    }
 
     @Override
     public Optional<FraudScore> getLatestScore(Person person) {

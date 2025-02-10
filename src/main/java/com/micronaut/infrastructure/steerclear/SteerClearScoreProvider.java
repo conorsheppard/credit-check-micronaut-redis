@@ -5,17 +5,14 @@ import com.micronaut.core.FraudScoreProvider;
 import com.micronaut.core.Person;
 import com.micronaut.infrastructure.steerclear.SteerClearResponse.RiskGroup;
 import jakarta.inject.Singleton;
+import lombok.AllArgsConstructor;
 
 import java.util.Optional;
 
 @Singleton
+@AllArgsConstructor
 public class SteerClearScoreProvider implements FraudScoreProvider {
-
     private final SteerClearClient steerClearClient;
-
-    public SteerClearScoreProvider(SteerClearClient steerClearClient) {
-        this.steerClearClient = steerClearClient;
-    }
 
     @Override
     public Optional<FraudScore> getLatestScore(Person person) {

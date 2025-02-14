@@ -9,10 +9,10 @@ package-native:
 	./mvnw package -Dpackaging=docker-native -Pgraalvm
 
 run:
-	java -jar target/fraud-check-micronaut-0.1.jar
+	java -jar target/credit-check-micronaut-0.1.jar
 
 docker-run:
-	docker run --rm --name fraud-check-micronaut -p 8080:8080 fraud-check-micronaut
+	docker run --rm --name credit-check-micronaut -p 8080:8080 credit-check-micronaut
 
 mvn-run:
 	mvn mn:run
@@ -27,7 +27,7 @@ coverage-badge-gen:
 	python3 -m jacoco_badge_generator -j target/jacoco-report/jacoco.csv
 
 redis-run:
-	docker run --rm --name redis-fraud-check-cache -p 6379:6379 redis
+	docker run --rm --name redis-credit-check-cache -p 6379:6379 redis
 
 .SILENT:
 .PHONY: default package package-native run docker-run mvn-run test-coverage check-coverage coverage-badge-gen redis-run

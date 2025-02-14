@@ -1,7 +1,7 @@
 micronaut:
   config-files: "classpath:application.yml"
   application:
-    name: fraud-check-micronaut
+    name: credit-check-micronaut
   packages:
     - com.micronaut
 

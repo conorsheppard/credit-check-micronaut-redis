@@ -1,4 +1,4 @@
-package com.micronaut.controller;
+package com.micronaut.request;
 
 import com.micronaut.core.Person;
 import io.micronaut.core.annotation.Introspected;
@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Introspected
 @Serdeable
-public class FraudScoreQuery {
+public class CreditScoreRequest {
 
     @QueryValue("email")
     private String email;

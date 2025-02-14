@@ -1,4 +1,4 @@
-package com.micronaut.infrastructure.fraudster;
+package com.micronaut.infrastructure.equifax;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,10 +9,10 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FraudsterResponse {
+public class EquifaxResponse {
     private String emailAddress;
     private String firstName;
     private String surname;
     private String postCode;
-    private int fraudRating;
+    private int creditRating;
 }

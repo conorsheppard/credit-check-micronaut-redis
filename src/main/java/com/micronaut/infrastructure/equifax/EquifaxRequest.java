@@ -1,4 +1,4 @@
-package com.micronaut.infrastructure.fraudster;
+package com.micronaut.infrastructure.equifax;
 
 import com.micronaut.core.Person;
 import lombok.AllArgsConstructor;
@@ -10,14 +10,14 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FraudsterRequest {
+public class EquifaxRequest {
     private String emailAddress;
     private String firstName;
     private String surname;
     private String postCode;
 
-    public static FraudsterRequest fromPerson(Person person) {
-        return new FraudsterRequest(person.getEmail(), person.getFirstName(),
+    public static EquifaxRequest fromPerson(Person person) {
+        return new EquifaxRequest(person.getEmail(), person.getFirstName(),
             person.getLastName(), person.getPostCode());
     }
 }

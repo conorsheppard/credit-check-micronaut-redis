@@ -1,17 +1,17 @@
-package com.micronaut.infrastructure.steerclear;
+package com.micronaut.infrastructure.transunion;
 
-import com.micronaut.infrastructure.steerclear.SteerClearResponse.RiskGroup;
+import com.micronaut.infrastructure.transunion.TransUnionResponse.RiskGroup;
 import jakarta.inject.Singleton;
 
 import java.util.Random;
 
 @Singleton
-public class SteerClearClientStub implements SteerClearClient {
+public class TransUnionClientStub implements TransUnionClient {
 
     private final Random random = new Random(System.currentTimeMillis());
 
-    public SteerClearResponse getScore(SteerClearRequest request) {
-        return new SteerClearResponse(
+    public TransUnionResponse getScore(TransUnionRequest request) {
+        return new TransUnionResponse(
             request.getEmail(),
             request.getFirstName(),
             request.getLastName(),

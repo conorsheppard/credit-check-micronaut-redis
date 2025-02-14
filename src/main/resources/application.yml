@@ -23,8 +23,8 @@ redis:
   uri: redis://localhost:6379
   timeout: 5s
   ssl: false
-  username:
-  password:
+#  username:
+#  password:
   db: 0
 
 logging:

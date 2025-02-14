@@ -16,7 +16,6 @@ import java.util.Objects;
 @Introspected
 @Serdeable
 public class FraudScore {
-
     private final Person person;
     private final int score;
     private final LocalDateTime time;

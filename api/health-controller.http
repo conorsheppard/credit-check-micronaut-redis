@@ -1,5 +1,2 @@
-### GET /liveness
-GET http://localhost:8080/health/liveness
-
-### GET /readiness
-GET http://localhost:8080/health/readiness
+### GET /health
+GET http://localhost:8080/health

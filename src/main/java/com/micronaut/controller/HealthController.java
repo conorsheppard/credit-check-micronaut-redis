@@ -1,5 +1,6 @@
 package com.micronaut.controller;
 
+import io.micronaut.http.HttpResponse;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
@@ -11,15 +12,9 @@ import reactor.core.publisher.Mono;
 public class HealthController {
     private static final Logger log = LoggerFactory.getLogger(HealthController.class);
 
-    @Get(value = "/liveness", produces = MediaType.TEXT_PLAIN)
-    public Mono<String> getLiveliness() {
-        log.info("Received request to GET /liveness");
-        return Mono.just("ok");
-    }
-
-    @Get(value = "/readiness", produces = MediaType.TEXT_PLAIN)
-    public Mono<String> getReadiness() {
-        log.info("Received request to GET /readiness");
-        return Mono.just("ok");
+    @Get(produces = MediaType.TEXT_PLAIN)
+    public Mono<HttpResponse<String>> getHealth() {
+        log.info("Received request to GET /health");
+        return Mono.just(HttpResponse.ok("ok"));
     }
 }

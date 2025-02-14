@@ -2,7 +2,6 @@ package com.micronaut.infrastructure.cache.hashmap;
 
 import com.micronaut.core.FraudScore;
 import com.micronaut.infrastructure.cache.FraudScoreCache;
-import io.micronaut.context.annotation.Primary;
 import io.micronaut.context.annotation.Value;
 import jakarta.inject.Singleton;
 import lombok.Getter;

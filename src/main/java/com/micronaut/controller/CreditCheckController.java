@@ -37,7 +37,8 @@ public class CreditCheckController {
     }
 
     @Get(value = "/v1/scores", produces = MediaType.APPLICATION_JSON)
-    public Mono<MutableHttpResponse<CreditScoreResponse>> getCreditScoresV1(@RequestBean CreditScoreRequest creditScoreRequest) {
+    public Mono<MutableHttpResponse<CreditScoreResponse>> getCreditScoresV1(
+            @RequestBean CreditScoreRequest creditScoreRequest) {
         Person person = creditScoreRequest.asPerson();
         Optional<CreditScore> creditScore = creditCheckService.calculateScoreForPerson(person);
 

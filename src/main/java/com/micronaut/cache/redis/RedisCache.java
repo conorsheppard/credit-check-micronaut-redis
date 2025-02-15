@@ -28,7 +28,9 @@ public class RedisCache implements CreditScoreCache {
     @SneakyThrows
     public Optional<CreditScore> get(String key) {
         String creditScoreJson = redisConnection.sync().get(key);
-        return creditScoreJson == null ? Optional.empty() : Optional.of(objectMapper.readValue(creditScoreJson, CreditScore.class));
+        return creditScoreJson == null
+                ? Optional.empty()
+                : Optional.of(objectMapper.readValue(creditScoreJson, CreditScore.class));
     }
 
     @Override

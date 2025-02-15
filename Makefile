@@ -5,6 +5,9 @@ default: up
 package:
 	mvn package
 
+checkstyle:
+	mvn checkstyle:check
+
 test:
 	mvn test
 

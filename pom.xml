@@ -55,6 +55,12 @@
     <dependency>
       <groupId>io.micronaut</groupId>
       <artifactId>micronaut-http-server-netty</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>io.netty</groupId>
+          <artifactId>netty-transport-native-epoll</artifactId>
+        </exclusion>
+      </exclusions>
       <scope>compile</scope>
     </dependency>
     <dependency>
@@ -108,6 +114,27 @@
       <groupId>org.yaml</groupId>
       <artifactId>snakeyaml</artifactId>
       <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>5.5.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.micronaut.test</groupId>
+      <artifactId>micronaut-test-rest-assured</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>testcontainers</artifactId>
+      <version>1.20.5</version>
+    </dependency>
+    <dependency>
+      <groupId>redis.clients</groupId>
+      <artifactId>jedis</artifactId>
+      <version>5.2.0</version>
     </dependency>
   </dependencies>
 
@@ -176,8 +203,7 @@
         <version>0.8.12</version>
         <configuration>
           <excludes>
-            <exclude>com/assignment/Main.class</exclude>
-            <exclude>com/assignment/system/ProductSystem.class</exclude>
+            <exclude>com/micronaut/Application.class</exclude>
           </excludes>
         </configuration>
         <executions>
@@ -204,12 +230,12 @@
             <configuration>
               <rules>
                 <rule>
-                  <element>PACKAGE</element>
+                  <element>BUNDLE</element>
                   <limits>
                     <limit>
                       <counter>LINE</counter>
                       <value>COVEREDRATIO</value>
-                      <minimum>0</minimum>
+                      <minimum>0.97</minimum>
                     </limit>
                   </limits>
                 </rule>

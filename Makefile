@@ -8,6 +8,9 @@ package:
 test:
 	mvn test
 
+deps-tree:
+	mvn dependency:tree
+
 package-native:
 	./mvnw package -Dpackaging=docker-native -Pgraalvm
 
@@ -17,7 +20,7 @@ build-docker-aot-native:
 
 ttfr:
 	# Time to first request of the Dockerized and AOT optimized application
-	./ttfr.sh credit-check-micronaut-0.1:latest
+	./ttfr.sh credit-check-micronaut:latest
 
 run:
 	java -jar target/credit-check-micronaut-0.1.jar
@@ -36,6 +39,8 @@ check-coverage:
 
 coverage-badge-gen:
 	python3 -m jacoco_badge_generator -j target/jacoco-report/jacoco.csv
+
+test-suite: test-coverage check-coverage coverage-badge-gen
 
 redis-start:
 	docker run --rm --name redis-credit-check-cache -p 6379:6379 redis

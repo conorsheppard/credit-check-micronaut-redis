@@ -30,20 +30,6 @@ public class CreditCheckController {
     private static final String V1_API_DEPRECATED = "deprecated";
     private static final String V1_API_ENABLED = "enabled";
 
-    enum ApiStatus {
-        REMOVED,
-        DEPRECATED,
-        ENABLED;
-
-        public static ApiStatus fromString(String status) {
-            return switch (status.toLowerCase()) {
-                case "removed" -> REMOVED;
-                case "deprecated" -> DEPRECATED;
-                default -> ENABLED;
-            };
-        }
-    }
-
     public CreditCheckController(CreditScoreService creditCheckService,
                                  @Value("${feature.api.scores.v1.status:deprecated}") String v1ApiStatus) {
         this.creditCheckService = creditCheckService;

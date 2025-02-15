@@ -43,8 +43,4 @@ public class RedisCache implements CreditScoreCache {
     public void saveDataWithExpiry(String key, String value, long expiryInSeconds) {
         redisConnection.sync().setex(key, expiryInSeconds, value);
     }
-
-    private void delete(String key) {
-        redisConnection.sync().del(key);
-    }
 }

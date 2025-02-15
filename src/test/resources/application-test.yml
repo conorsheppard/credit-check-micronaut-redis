@@ -1,0 +1,20 @@
+micronaut:
+  caches:
+    my-cache:
+      maximum-size: 100
+
+feature:
+  api:
+    scores:
+      v1:
+        status: deprecated
+
+redis:
+  uri: redis://localhost:6380
+  timeout: 5s
+  ssl: false
+  db: 0
+
+logging:
+  level:
+    io.micronaut: INFO

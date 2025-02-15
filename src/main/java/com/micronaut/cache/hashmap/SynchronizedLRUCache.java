@@ -1,7 +1,8 @@
-package com.micronaut.infrastructure.cache.hashmap;
+package com.micronaut.cache.hashmap;
 
-import com.micronaut.core.CreditScore;
-import com.micronaut.infrastructure.cache.CreditScoreCache;
+import com.micronaut.entity.CreditScore;
+import com.micronaut.cache.CreditScoreCache;
+import io.micronaut.context.annotation.Primary;
 import io.micronaut.context.annotation.Value;
 import jakarta.inject.Singleton;
 import lombok.Getter;

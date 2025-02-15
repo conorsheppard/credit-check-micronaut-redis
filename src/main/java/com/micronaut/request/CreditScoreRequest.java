@@ -1,6 +1,6 @@
 package com.micronaut.request;
 
-import com.micronaut.core.Person;
+import com.micronaut.entity.Person;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.http.annotation.*;
 import io.micronaut.serde.annotation.Serdeable;

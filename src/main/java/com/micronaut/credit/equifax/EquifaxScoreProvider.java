@@ -1,8 +1,8 @@
-package com.micronaut.infrastructure.equifax;
+package com.micronaut.credit.equifax;
 
-import com.micronaut.core.CreditScore;
-import com.micronaut.core.CreditScoreProvider;
-import com.micronaut.core.Person;
+import com.micronaut.entity.CreditScore;
+import com.micronaut.credit.CreditScoreProvider;
+import com.micronaut.entity.Person;
 import jakarta.inject.Singleton;
 import lombok.AllArgsConstructor;
 

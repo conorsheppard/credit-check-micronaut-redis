@@ -1,6 +1,6 @@
-package com.micronaut.infrastructure.equifax;
+package com.micronaut.credit.equifax;
 
-import com.micronaut.core.Person;
+import com.micronaut.entity.Person;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

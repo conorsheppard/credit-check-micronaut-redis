@@ -4,6 +4,13 @@ micronaut:
     name: credit-check-micronaut
   packages:
     - com.micronaut
+  cache:
+    enabled: true
+    caches:
+      creditscores:
+        expire-after-write: 10m  # Cache expires after 10 minutes
+        redis:
+          enabled: true
 
 app:
   cache:

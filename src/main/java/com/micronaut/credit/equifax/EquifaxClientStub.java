@@ -1,4 +1,4 @@
-package com.micronaut.infrastructure.equifax;
+package com.micronaut.credit.equifax;
 
 import jakarta.inject.Singleton;
 

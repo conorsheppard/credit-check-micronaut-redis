@@ -1,8 +1,9 @@
-package com.micronaut.infrastructure.cache;
+package com.micronaut.credit.cache;
 
-import com.micronaut.core.CreditScore;
-import com.micronaut.core.Person;
-import com.micronaut.infrastructure.cache.hashmap.SynchronizedLRUCache;
+import com.micronaut.cache.CreditScoreCache;
+import com.micronaut.entity.CreditScore;
+import com.micronaut.entity.Person;
+import com.micronaut.cache.hashmap.SynchronizedLRUCache;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

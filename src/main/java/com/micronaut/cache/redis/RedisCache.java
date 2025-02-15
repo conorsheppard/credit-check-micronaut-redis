@@ -1,22 +1,24 @@
-package com.micronaut.infrastructure.cache.redis;
+package com.micronaut.cache.redis;
 
-import com.micronaut.core.CreditScore;
-import com.micronaut.core.Person;
-import com.micronaut.infrastructure.cache.CreditScoreCache;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.micronaut.entity.CreditScore;
+import com.micronaut.entity.Person;
+import com.micronaut.cache.CreditScoreCache;
 import io.lettuce.core.api.StatefulRedisConnection;
 import io.micronaut.context.annotation.Primary;
 import io.micronaut.context.annotation.Property;
 import io.micronaut.context.annotation.Requires;
 import jakarta.inject.Singleton;
+import lombok.SneakyThrows;
 
 import java.util.Optional;
 
 @Singleton
 @Primary
-@Requires(bean = StatefulRedisConnection.class)
 public class RedisCache implements CreditScoreCache {
     private final StatefulRedisConnection<String, String> redisConnection;
     private final long expirySeconds;
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     public RedisCache(final StatefulRedisConnection<String, String> redisConnection,
                       @Property(name = "app.cache.expiry") long expirySeconds) {
@@ -25,14 +27,17 @@ public class RedisCache implements CreditScoreCache {
     }
 
     @Override
+    @SneakyThrows
     public Optional<CreditScore> get(String key) {
-        var score = redisConnection.sync().get(key);
-        return score == null ? Optional.empty() : Optional.of(new CreditScore(Person.create(key, null, null, null), Integer.parseInt(score), null));
+        String creditScoreJson = redisConnection.sync().get(key);
+        return creditScoreJson == null ? Optional.empty() : Optional.of(objectMapper.readValue(creditScoreJson, CreditScore.class));
     }
 
     @Override
+    @SneakyThrows
     public void put(String key, CreditScore creditScore) {
-        saveDataWithExpiry(key, String.valueOf(creditScore.getScore()), expirySeconds);
+        String creditScoreMapped = objectMapper.writeValueAsString(creditScore);
+        saveDataWithExpiry(key, creditScoreMapped, expirySeconds);
     }
 
     public void saveDataWithExpiry(String key, String value, long expiryInSeconds) {

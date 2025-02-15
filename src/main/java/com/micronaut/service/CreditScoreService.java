@@ -1,6 +1,9 @@
-package com.micronaut.core;
+package com.micronaut.service;
 
-import com.micronaut.infrastructure.cache.CreditScoreCache;
+import com.micronaut.entity.CreditScore;
+import com.micronaut.entity.Person;
+import com.micronaut.cache.CreditScoreCache;
+import com.micronaut.credit.CreditScoreProvider;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import lombok.AllArgsConstructor;
@@ -37,7 +40,7 @@ public class CreditScoreService {
         var totalOfScores = listOfScores.stream().mapToInt(i -> i).sum();
         var scoreAverage = totalOfScores / creditScoreProviders.length;
 
-        CreditScore f = new CreditScore(person, scoreAverage, LocalDateTime.now(ZoneOffset.UTC));
+        CreditScore f = new CreditScore(person, scoreAverage);
         creditScoreCache.put(person.getEmail(), f);
 
         return Optional.of(f);

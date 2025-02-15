@@ -1,4 +1,4 @@
-package com.micronaut.infrastructure.transunion;
+package com.micronaut.credit.transunion;
 
 public interface TransUnionClient {
     TransUnionResponse getScore(TransUnionRequest request);

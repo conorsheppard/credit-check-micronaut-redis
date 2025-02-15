@@ -1,8 +1,8 @@
 package com.micronaut.controller;
 
-import com.micronaut.core.CreditScore;
-import com.micronaut.core.CreditScoreService;
-import com.micronaut.core.Person;
+import com.micronaut.entity.CreditScore;
+import com.micronaut.service.CreditScoreService;
+import com.micronaut.entity.Person;
 import com.micronaut.request.CreditScoreRequest;
 import com.micronaut.response.CreditScoreResponse;
 import io.micronaut.context.annotation.Value;

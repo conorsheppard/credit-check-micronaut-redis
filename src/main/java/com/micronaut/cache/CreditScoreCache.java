@@ -1,6 +1,6 @@
-package com.micronaut.infrastructure.cache;
+package com.micronaut.cache;
 
-import com.micronaut.core.CreditScore;
+import com.micronaut.entity.CreditScore;
 
 import java.util.Optional;
 

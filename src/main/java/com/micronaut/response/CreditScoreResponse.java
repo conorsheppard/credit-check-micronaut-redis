@@ -1,6 +1,6 @@
 package com.micronaut.response;
 
-import com.micronaut.core.CreditScore;
+import com.micronaut.entity.CreditScore;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.serde.annotation.Serdeable;
 import lombok.*;

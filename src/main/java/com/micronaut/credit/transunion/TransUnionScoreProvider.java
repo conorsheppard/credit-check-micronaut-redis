@@ -1,9 +1,9 @@
-package com.micronaut.infrastructure.transunion;
+package com.micronaut.credit.transunion;
 
-import com.micronaut.core.CreditScore;
-import com.micronaut.core.CreditScoreProvider;
-import com.micronaut.core.Person;
-import com.micronaut.infrastructure.transunion.TransUnionResponse.RiskGroup;
+import com.micronaut.entity.CreditScore;
+import com.micronaut.credit.CreditScoreProvider;
+import com.micronaut.entity.Person;
+import com.micronaut.credit.transunion.TransUnionResponse.RiskGroup;
 import jakarta.inject.Singleton;
 import lombok.AllArgsConstructor;
 

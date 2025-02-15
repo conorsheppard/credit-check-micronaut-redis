@@ -1,6 +1,6 @@
-package com.micronaut.infrastructure.transunion;
+package com.micronaut.credit.transunion;
 
-import com.micronaut.infrastructure.transunion.TransUnionResponse.RiskGroup;
+import com.micronaut.credit.transunion.TransUnionResponse.RiskGroup;
 import jakarta.inject.Singleton;
 
 import java.util.Random;

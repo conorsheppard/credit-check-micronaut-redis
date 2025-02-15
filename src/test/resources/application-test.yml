@@ -2,6 +2,17 @@ micronaut:
   caches:
     my-cache:
       maximum-size: 100
+  application:
+    name: test-app
+  server:
+    port: 8080
+  env:
+    environments: test
+
+app:
+  cache:
+    size: 2
+    expiry: 10
 
 feature:
   api:
@@ -10,7 +21,7 @@ feature:
         status: deprecated
 
 redis:
-  uri: redis://localhost:6380
+  uri: redis://localhost:6379
   timeout: 5s
   ssl: false
   db: 0

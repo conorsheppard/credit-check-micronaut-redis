@@ -1,0 +1,37 @@
+micronaut:
+  config-files: "classpath:application.yml"
+  application:
+    name: credit-check-micronaut
+  packages:
+    - com.micronaut
+  cache:
+    enabled: true
+    caches:
+      creditscores:
+        expire-after-write: 10m  # Cache expires after 10 minutes
+        redis:
+          enabled: true
+
+app:
+  cache:
+    size: 2
+    expiry: 10
+
+feature:
+  api:
+    scores:
+      v1:
+        status: deprecated
+
+server:
+  port: 8080
+
+redis:
+  uri: redis://redis:6379
+  timeout: 5s
+  ssl: false
+  db: 0
+
+logging:
+  level:
+    io.micronaut: DEBUG

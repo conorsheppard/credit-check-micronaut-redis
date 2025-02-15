@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-default: run
+default: up
 
 package:
 	mvn package
@@ -45,5 +45,8 @@ test-suite: test-coverage check-coverage coverage-badge-gen
 redis-start:
 	docker run --rm --name redis-credit-check-cache -p 6379:6379 redis
 
+up:
+	docker-compose -f docker-compose.yml up
+
 .SILENT:
-.PHONY: default package test package-native build-docker-aot-native ttfr run docker-run mvn-run test-coverage check-coverage coverage-badge-gen redis-start
+.PHONY: default package test package-native build-docker-aot-native ttfr run docker-run mvn-run test-coverage check-coverage coverage-badge-gen redis-start up

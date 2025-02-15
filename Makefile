@@ -5,8 +5,19 @@ default: run
 package:
 	mvn package
 
+test:
+	mvn test
+
 package-native:
 	./mvnw package -Dpackaging=docker-native -Pgraalvm
+
+build-docker-aot-native:
+	# AOT Optimized Docker Image with a native executable inside
+	./mvnw package -Dpackaging=docker-native -Dmicronaut.aot.enabled=true -Pgraalvm
+
+ttfr:
+	# Time to first request of the Dockerized and AOT optimized application
+	./ttfr.sh credit-check-micronaut-0.1:latest
 
 run:
 	java -jar target/credit-check-micronaut-0.1.jar
@@ -26,8 +37,8 @@ check-coverage:
 coverage-badge-gen:
 	python3 -m jacoco_badge_generator -j target/jacoco-report/jacoco.csv
 
-redis-run:
+redis-start:
 	docker run --rm --name redis-credit-check-cache -p 6379:6379 redis
 
 .SILENT:
-.PHONY: default package package-native run docker-run mvn-run test-coverage check-coverage coverage-badge-gen redis-run
+.PHONY: default package test package-native build-docker-aot-native ttfr run docker-run mvn-run test-coverage check-coverage coverage-badge-gen redis-start

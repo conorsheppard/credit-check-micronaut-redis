@@ -18,7 +18,7 @@ public class SynchronizedLRUCacheTest {
                 "name",
                 "surname",
                 "NW1 8AB"),
-                1, null));
+                1));
 
         assertEquals(1, creditScoreCache.get("key")
                 .map(CreditScore::getScore).orElse(-1).intValue());

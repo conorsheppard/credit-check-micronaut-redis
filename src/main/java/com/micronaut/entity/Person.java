@@ -21,8 +21,8 @@ public class Person {
     @JsonProperty("postCode")
     private final String postCode;
 
-    private static final Pattern EMAIL_PATTERN =
-            Pattern.compile("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
+    private static final String EMAIL_REGEX = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+    private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
 
     public static Person create(String email, String firstName, String lastName, String postCode) {
         return new Person(validateEmail(email), firstName, lastName, postCode);

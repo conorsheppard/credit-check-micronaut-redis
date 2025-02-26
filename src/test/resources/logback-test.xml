@@ -1,0 +1,10 @@
+<configuration>
+    <include resource="io/micronaut/logging/logback/default.xml"/>
+
+    <!-- Silence debug logs for tests -->
+    <logger name="com.micronaut" level="ERROR"/>
+
+    <root level="WARN">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

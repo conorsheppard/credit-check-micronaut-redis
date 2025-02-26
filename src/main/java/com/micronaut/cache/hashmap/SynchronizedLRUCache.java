@@ -38,12 +38,4 @@ public class SynchronizedLRUCache implements CreditScoreCache {
     public synchronized Optional<CreditScore> get(String key) {
         return Optional.ofNullable(cacheStorage.get(key));
     }
-
-    public synchronized boolean containsKey(String key) {
-        return cacheStorage.containsKey(key);
-    }
-
-    public synchronized void clear() {
-        cacheStorage.clear();
-    }
 }

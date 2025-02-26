@@ -1,13 +1,11 @@
 package com.micronaut.cache.redis;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.micronaut.entity.CreditScore;
-import com.micronaut.entity.Person;
 import com.micronaut.cache.CreditScoreCache;
+import com.micronaut.entity.CreditScore;
 import io.lettuce.core.api.StatefulRedisConnection;
 import io.micronaut.context.annotation.Primary;
 import io.micronaut.context.annotation.Property;
-import io.micronaut.context.annotation.Requires;
 import jakarta.inject.Singleton;
 import lombok.SneakyThrows;
 

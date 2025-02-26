@@ -1,6 +1,5 @@
 package com.micronaut.controller;
 
-import io.micronaut.cache.SyncCache;
 import io.micronaut.context.annotation.Property;
 import io.micronaut.runtime.server.EmbeddedServer;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -27,9 +26,6 @@ class CreditCheckControllerTest {
 
     @Inject
     private EmbeddedServer embeddedServer;
-
-//    @Inject
-//    SyncCache myRedisCache;
 
     @BeforeAll
     static void startRedis() {
